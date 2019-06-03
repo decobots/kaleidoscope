@@ -1,11 +1,6 @@
-<svelty:header>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
-        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-</svelty:header>
 <script>
-  import Kaleidoscope from './kaleidoscope.svelte';
+  import Kaleidoscope2 from './kaleidoscope2.svelte';
+import Fun from './fun.svelte';
   let name = 'world';
 </script>
 
@@ -13,7 +8,23 @@
   :root {
     --red: #ff0eff;
   }
+  div{
+    margin: 0;
+    padding: 0;
+    top:0;
+    bottom: 0;
+    line-height: 0;
+  }
+  .even{
+    padding-left:50px;
+    margin-top:-30px;
+  }
+
 </style>
-<p class="text-danger">hi!</p>
-<p class="text-primary">hi!</p>
-<Kaleidoscope></Kaleidoscope>
+
+<div class="">
+  <Kaleidoscope2  height="50"></Kaleidoscope2><Kaleidoscope2  height="50"></Kaleidoscope2><Kaleidoscope2  height="50"></Kaleidoscope2>
+</div>
+<div class="even">
+  <Kaleidoscope2  height="50"></Kaleidoscope2><Kaleidoscope2  height="50"></Kaleidoscope2>
+</div>
