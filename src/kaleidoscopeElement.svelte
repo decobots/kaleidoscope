@@ -1,39 +1,44 @@
 <script>
-  import Fun from './fun.svelte';
+  import Triangle from "./triangle.svelte"
 
-  import {getContext} from 'svelte';
-  import {Counter, Degree, toArray} from "./counter.js";
+  import {Counter, toArray} from "./counter.js";
+  import {height, side} from "./store.js"
 
-  let height = getContext('height');
-  let side = getContext('side');
+
   const _counter = Counter();
-  const _degree = Degree();
+  const degrees = [0, 60, 120, 180, 240, 300];
 
   $: imgStyle = `
     position: absolute;
-    top:${side / 2 - 2}px;
+    top:${$side / 2}px;
     left:0px;
-    width:${height}px;
-    height: ${side}px;
+    width:${$height}px;
+    height: ${$side}px;
     background-color: #ffaaaa;
-    clip-path: polygon(0 0 , 0 ${side}px, ${height}px ${side / 2}px);
-    transform-origin: ${height}px ${side / 2}px;
+    clip-path: polygon(0 0 , 0 ${$side}px, ${$height}px ${$side / 2}px);
+    -webkit-clip-path: polygon(0 0 , 0 ${$side}px, ${$height}px ${$side / 2}px);
+
+    transform-origin: ${$height}px ${$side / 2}px;
    `;
 
   $: divStyle = `
     display:inline-block;
-    width:${height * 2}px;
-    height:${side * 2}px;
+    width:${$height * 2}px;
+    height:${$side * 2}px;
     position: relative;
+
   `;
 
 </script>
 <div style="{divStyle}">
-  {#each toArray(6) as _}
-    <div style="{imgStyle} transform: rotate({_degree.next().value}deg);">
-      <div style="transform: scaleY({(_counter.next().value % 2 == 0) ? -1 : 1});">
-        <Fun></Fun>
+  {#each degrees as degree}
+    <div style="{imgStyle} transform: rotate({degree}deg);">
+      <div style="transform: scaleY({(degree % 120 === 0) ? -1 : 1});">
+        <Triangle>
+          <slot></slot>
+        </Triangle>
       </div>
     </div>
   {/each}
 </div>
+

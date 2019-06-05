@@ -1,26 +1,24 @@
 <script>
   import KaleidoscopeElement from './kaleidoscopeElement.svelte';
   import {toArray} from "./counter.js";
-  import {setContext} from 'svelte';
+  import {height, side} from "./store.js";
 
-  export let height = 150;
-  let side = Math.ceil(2 * height / (Math.sqrt(3)));
-  let TextureWidth = 512;
-  let TextureHeight = 223;
+  export let _height = 100;
+  $: height.set(_height);
 
-  setContext('side', side);
-  setContext('height', height);
+  let TextureWidth = 100;
+  let TextureHeight = 100;
 
 
-  $: NumberHorizontal = parseInt(TextureWidth / (height * 2) + 2);
-  $: NumberWertical = parseInt(TextureHeight / (height * 2) + 2);
+  $: NumberHorizontal = parseInt(TextureWidth / ($height * 2) + 2);
+  $: NumberWertical = parseInt(TextureHeight / ($height * 2) + 2);
 
   $: oddStyle = `
-    margin-top: -${side / 2 + 1}px;
-    margin-left: -${height}px;
+    margin-top: -${$side / 2 + 2}px;
+    margin-left: -${$height}px;
   `;
   $: evenStyle = `
-    margin-top: -${side / 2 + 1}px;
+    margin-top: -${$side / 2 + 2}px;
   `;
 </script>
 
@@ -44,7 +42,9 @@
   {#each toArray(NumberWertical) as row}
     <div style="{(row % 2 === 0)? oddStyle: evenStyle}">
       {#each toArray(NumberHorizontal) as _}
-        <KaleidoscopeElement></KaleidoscopeElement>
+        <KaleidoscopeElement>
+          <slot></slot>
+        </KaleidoscopeElement>
       {/each}
     </div>
   {/each}
