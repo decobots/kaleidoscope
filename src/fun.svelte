@@ -22,7 +22,7 @@
   .main {
     transform-origin: center;
     display: inline-block;
-    animation: rotation 10s linear infinite;
+    /*animation: rotation 10s linear infinite;*/
   }
 
 
