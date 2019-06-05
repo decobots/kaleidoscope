@@ -15,7 +15,45 @@
 
 <style>
   circle {
-    fill: #ff3e00
+    fill: #ff3e00;
+    animation: rainbowing 20s linear infinite;
+  }
+
+  .main {
+    transform-origin: center;
+    display: inline-block;
+    animation: rotation 10s linear infinite;
+  }
+
+
+  @keyframes rotation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(359deg);
+    }
+  }
+
+  @keyframes rainbowing {
+    0% {
+      fill: red;
+    }
+    20% {
+      fill: orange;
+    }
+    40% {
+      fill: yellow;
+    }
+    60% {
+      fill: green;
+    }
+    80% {
+      fill: blue;
+    }
+    100% {
+      fill: blueviolet;
+    }
   }
 </style>
 
@@ -27,7 +65,7 @@
 <svelte:window bind:innerWidth={w} bind:innerHeight={h}
 
 />
-<svg width="{size}px" height="{size}px">
+<svg width="{size}px" height="{size}px" class="main">
   <circle cx={$coords.x} cy={$coords.y} r={$d}></circle>
   <circle cy={$coords.x} cx={$coords.y} r={$d}></circle>
 </svg>

@@ -1,13 +1,11 @@
 <script>
   import Fun from './fun.svelte';
-  import {setContext} from 'svelte';
-  import {Counter, Degree} from "./counter.js";
 
-  export let height = 50;
-  let side = Math.ceil(2 * height / (Math.sqrt(3)));
-  setContext('side', side);
+  import {getContext} from 'svelte';
+  import {Counter, Degree, toArray} from "./counter.js";
 
-  const _triangles = [1, 2, 3, 4, 5, 6];
+  let height = getContext('height');
+  let side = getContext('side');
   const _counter = Counter();
   const _degree = Degree();
 
@@ -31,7 +29,7 @@
 
 </script>
 <div style="{divStyle}">
-  {#each _triangles as _}
+  {#each toArray(6) as _}
     <div style="{imgStyle} transform: rotate({_degree.next().value}deg);">
       <div style="transform: scaleY({(_counter.next().value % 2 == 0) ? -1 : 1});">
         <Fun></Fun>

@@ -16,3 +16,12 @@ export function* Degree() {
     degree += 60;
   }
 }
+
+
+export function toArray(i) {
+  let arr = [];
+  while (i--) {
+    arr.push(i);
+  }
+  return arr;
+}

@@ -1,30 +1,14 @@
 <script>
-  import Kaleidoscope2 from './kaleidoscope2.svelte';
-import Fun from './fun.svelte';
-  let name = 'world';
+  import KaleidoscopeTexture from './kaleidoscopeTexture.svelte';
 </script>
 
 <style>
-  :root {
-    --red: #ff0eff;
-  }
-  div{
-    margin: 0;
-    padding: 0;
-    top:0;
-    bottom: 0;
-    line-height: 0;
-  }
-  .even{
-    padding-left:50px;
-    margin-top:-30px;
-  }
+div{
+  border: 1px solid blue;}
 
 </style>
 
-<div class="">
-  <Kaleidoscope2  height="50"></Kaleidoscope2><Kaleidoscope2  height="50"></Kaleidoscope2><Kaleidoscope2  height="50"></Kaleidoscope2>
+<div style="width:80vmax; height:80vmin">
+  <KaleidoscopeTexture></KaleidoscopeTexture>
 </div>
-<div class="even">
-  <Kaleidoscope2  height="50"></Kaleidoscope2><Kaleidoscope2  height="50"></Kaleidoscope2>
-</div>
+
