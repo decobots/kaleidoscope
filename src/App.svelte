@@ -7,9 +7,9 @@
           crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-          integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-          crossorigin="anonymous"></script>
+<!--  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"-->
+<!--          integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"-->
+<!--          crossorigin="anonymous"></script>-->
 </svelte:head>
 <script>
   import KaleidoscopeTexture from './kaleidoscopeTexture.svelte';
@@ -19,6 +19,17 @@
   let height = 150;
   let angle = 0;
   let rotate = 0;
+  let file = "images.jpg";
+
+  function handleFileSelect(evt) {
+    let files = evt.target.files; // FileList object
+    let reader = new FileReader();
+    let f = files[0];
+    reader.readAsDataURL(f);
+    reader.onload = f => {
+      file = f.target.result;
+    };
+  }
 </script>
 
 <style>
@@ -28,25 +39,30 @@
   <div class="card mb-3 p-0">
     <div class="card-body p-2">
       <div class="row justify-content-between align-items-end">
-        <div class="col-3">
+        <div class="col-sm-3">
           <div class="form-group">
             <label for="hR">Height: {height}</label>
             <input type="range" id="hR" class="form-control-range" min="150" max="300" bind:value={height}/>
           </div>
         </div>
-        <div class="col-3">
+        <div class="col-sm-3">
           <div class="form-group">
             <label for="aR">Angle: {height}</label>
             <input type="range" id="aR" class="form-control-range" min="0" max="360" bind:value={angle}/>
           </div>
         </div>
-        <div class="col-3">
+        <div class="col-sm-3">
           <div class="form-group">
             <label for="rR">Auto rotation: {rotate}</label>
             <input type="checkbox" id="rR" bind:checked={rotate}>
           </div>
         </div>
-
+        <div class="col-sm-3">
+          <div class="form-group">
+            <label for="fR">File:</label>
+            <input type="file" id="fR" on:change="{handleFileSelect}">
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -55,8 +71,8 @@
 <div style="width:100%; height:85vh;">
   <KaleidoscopeTexture bind:_height={height}>
     <Triangle bind:rotate={rotate} bind:angle={angle}>
-
-      <Fun></Fun> <img src="images.jpg" alt="back"/>
+<!--      <Fun></Fun>-->
+      <img src={file} alt="back"/>
     </Triangle>
   </KaleidoscopeTexture>
 </div>
