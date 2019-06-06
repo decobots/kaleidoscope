@@ -1,18 +1,14 @@
 <script>
   import {height, side} from "./store.js";
 
-  export let rotation = 0;
+  export let angle = 0;
   export let rotate = true;
   $: divStyle = `
     width:${$side}px;
     height:${$side}px;
     position: relative;
-    transform:rotate(${rotation}deg);
-    animation: rotation 10s linear infinite;
+    transform: rotate(${angle}deg);
   `;
-  // if(rotate){
-  //   divStyle+= 'animation: rotation 10s linear infinite; ';
-  // }
 </script>
 <style>
   div :first-child {
@@ -25,7 +21,9 @@
     position: absolute;
     left: -25%;
   }
-
+  .rotate {
+    animation: rotation 10s linear infinite;
+  }
   @keyframes rotation {
     0% {
       transform: rotate(0deg);
@@ -35,7 +33,7 @@
     }
   }
 </style>
-<div name="triangle" style={divStyle}>
+<div name="triangle" style={divStyle} class:rotate>
   <slot></slot>
 </div>
 

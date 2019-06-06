@@ -16,38 +16,47 @@
   import Triangle from "./triangle.svelte"
   import Fun from './fun.svelte';
 
-  let height = 140;
+  let height = 150;
+  let angle = 0;
   let rotate = 0;
 </script>
 
 <style>
 </style>
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-3">
-      <div class="form-group">
-        <label for="hR">Height</label>
-        <input type="range" id="hR" class="form-control-range" min="200" max="300" bind:value={height}/>
-      </div>
-    </div>
+<div class="container-fluid p-0">
+  <div class="card mb-3 p-0">
+    <div class="card-body p-2">
+      <div class="row justify-content-between align-items-end">
+        <div class="col-3">
+          <div class="form-group">
+            <label for="hR">Height: {height}</label>
+            <input type="range" id="hR" class="form-control-range" min="150" max="300" bind:value={height}/>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="form-group">
+            <label for="aR">Angle: {height}</label>
+            <input type="range" id="aR" class="form-control-range" min="0" max="360" bind:value={angle}/>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="form-group">
+            <label for="rR">Auto rotation: {rotate}</label>
+            <input type="checkbox" id="rR" bind:checked={rotate}>
+          </div>
+        </div>
 
-    <div class="col-1"><p>{height}</p></div>
-    <div class="col-3">
-      <div class="form-group">
-        <label for="rR">Rotation</label>
-        <input type="range" id="rR" class="form-control-range" min="0" max="360" bind:value={rotate}>
       </div>
     </div>
-    <div class="col-1"><p>{rotate}</p></div>
   </div>
 </div>
 
 <div style="width:100%; height:85vh;">
   <KaleidoscopeTexture bind:_height={height}>
-    <Triangle rotation={rotate}>
-      <img src="images.jpg" alt="back" />
-      <Fun></Fun>
+    <Triangle bind:rotate={rotate} bind:angle={angle}>
+
+      <Fun></Fun> <img src="images.jpg" alt="back"/>
     </Triangle>
   </KaleidoscopeTexture>
 </div>
