@@ -72,7 +72,7 @@
   <KaleidoscopeTexture bind:_height={height}>
     <Triangle bind:rotate={rotate} bind:angle={angle}>
 <!--      <Fun></Fun>-->
-      <img src={file} alt="back"/>
+      <img src={file} alt="back" />
     </Triangle>
   </KaleidoscopeTexture>
 </div>
