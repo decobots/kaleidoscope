@@ -1,8 +1,6 @@
 <script>
-  import Triangle from "./triangle.svelte"
-
   import {Counter, toArray} from "./counter.js";
-  import {height, side} from "./store.js"
+  import {height, side} from "./store.js";
 
 
   const _counter = Counter();
@@ -14,10 +12,9 @@
     left:0px;
     width:${$height}px;
     height: ${$side}px;
-    background-color: #ffaaaa;
+    background-color: #aaaaaa;
     clip-path: polygon(0 0 , 0 ${$side}px, ${$height}px ${$side / 2}px);
     -webkit-clip-path: polygon(0 0 , 0 ${$side}px, ${$height}px ${$side / 2}px);
-
     transform-origin: ${$height}px ${$side / 2}px;
    `;
 
@@ -26,19 +23,16 @@
     width:${$height * 2}px;
     height:${$side * 2}px;
     position: relative;
-
   `;
 
 </script>
+
+
 <div style="{divStyle}">
   {#each degrees as degree}
-    <div style="{imgStyle} transform: rotate({degree}deg);">
-      <div style="transform: scaleY({(degree % 120 === 0) ? -1 : 1});">
-        <Triangle>
-          <slot></slot>
-        </Triangle>
-      </div>
+    <div name="rotate and scale"
+         style="{imgStyle} transform: rotate({degree}deg) scaleY({(degree % 120 === 0) ? -1 : 1});">
+        <slot></slot>
     </div>
   {/each}
 </div>
-

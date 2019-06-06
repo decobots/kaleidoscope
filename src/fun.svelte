@@ -10,7 +10,7 @@
     damping: 0.1
   });
 
-  let d = spring(side / 10);
+  let d = spring($side / 10);
 </script>
 
 <style>
@@ -26,14 +26,7 @@
   }
 
 
-  @keyframes rotation {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(359deg);
-    }
-  }
+
 
   @keyframes rainbowing {
     0% {
@@ -58,14 +51,15 @@
 </style>
 
 <svelte:body
-  on:mousemove="{e => coords.set({ x: e.clientX*side/w, y: e.clientY*side/h })}"
-  on:mousedown="{() => d.set(side/10)}"
-  on:mouseup="{() => d.set(side/20)}"
+  on:mousemove="{e => coords.set({ x: e.clientX * $side/w, y: e.clientY * $side/h })}"
+  on:touchmove="{e => coords.set({ x: e.clientX * $side/w, y: e.clientY * $side/h })}"
+  on:mousedown="{() => d.set($side/10)}"
+  on:mouseup="{() => d.set($side/20)}"
 />
 <svelte:window bind:innerWidth={w} bind:innerHeight={h}
 
 />
-<svg class="main" width="{side}px" height="{side}px">
+<svg class="main" >
   <circle cx={$coords.x} cy={$coords.y} r={$d}></circle>
   <circle cy={$coords.x} cx={$coords.y} r={$d}></circle>
 </svg>
