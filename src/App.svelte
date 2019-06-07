@@ -21,6 +21,7 @@
   let height = 150;
   let angle = 120;
   let rotate = 0;
+  let speed = 5;
   let file = "images.jpg";
 
   function handleFileSelect(evt) {
@@ -52,16 +53,23 @@
   <div class="card mb-3 p-0">
     <div class="card-body p-1">
       <div class="row justify-content-between align-items-end">
-        <div class="col-sm-3">
+        <div class="col-sm-2">
           <div class="form-group">
             <label for="hR">Height: {height}</label>
             <input type="range" id="hR" class="form-control-range" min="150" max="300" bind:value={height}/>
           </div>
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-2">
           <div class="form-group">
             <label for="aR">Angle: {angle}</label>
             <input type="range" id="aR" class="form-control-range" min="0" max="360" bind:value={angle}/>
+          </div>
+
+        </div>
+        <div class="col-sm-2">
+          <div class="form-group">
+            <label for="sR">Speed: {speed}</label>
+            <input type="range" id="sR" class="form-control-range" min="1" max="40" bind:value={speed}/>
           </div>
         </div>
         <div class="col-sm-2">
@@ -81,9 +89,9 @@
   </div>
 </div>
 
-<div id="main" on:click="{()=>{}}">
+<div on:click="{()=>{}}">
   <KaleidoscopeTexture bind:_height={height}>
-    <Triangle bind:rotate={rotate} bind:angle={angle}>
+    <Triangle bind:rotate={rotate} bind:angle={angle} bind:speed={speed}>
 <!--      <Fun></Fun>-->
       <img src={file} alt="back"/>
     </Triangle>
