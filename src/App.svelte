@@ -70,7 +70,7 @@
   </div>
 </div>
 
-<div style="width:100%; height:85vh;">
+<div style="width:100%; height:85vh;" on:click="{()=>{}}">
   <KaleidoscopeTexture bind:_height={height}>
     <Triangle bind:rotate={rotate} bind:angle={angle}>
 <!--      <Fun></Fun>-->
