@@ -15,7 +15,7 @@
 
 <script>
   import KaleidoscopeTexture from './kaleidoscopeTexture.svelte';
-  import Triangle from "./triangle.svelte"
+  import Back from "./back.svelte"
   import Fun from './fun.svelte';
 
   let height = 150;
@@ -70,12 +70,16 @@
   </div>
 </div>
 
-<div style="width:100%; height:85vh;">
-  <KaleidoscopeTexture bind:_height={height}>
-    <Triangle bind:rotate={rotate} bind:angle={angle}>
-<!--      <Fun></Fun>-->
-      <img src={file} alt="back" />
-    </Triangle>
-  </KaleidoscopeTexture>
+<!--<div style="width:100%; height:85vh;">-->
+<!--  <KaleidoscopeTexture bind:_height={height}>-->
+<!--    <Triangle bind:rotate={rotate} bind:angle={angle}>-->
+<!--&lt;!&ndash;      <Fun></Fun>&ndash;&gt;-->
+<!--      <img src={file} alt="back" />-->
+<!--    </Triangle>-->
+<!--  </KaleidoscopeTexture>-->
+<!--</div>-->
+<div style="position: relative;">
+  <div style="position: absolute; top:0">
+    <Back></Back>
+  </div>
 </div>
-

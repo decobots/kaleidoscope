@@ -3,30 +3,33 @@
 
   export let angle = 0;
   export let rotate = true;
-   let dif = $side-$height;
+  let dif = $side - $height;
   $: divStyle = `
-    width:${$side + dif*2}px;
-    height:${$side + dif*2}px;
-    left: -${2*dif}px;
+    width:${$side + dif * 2}px;
+    height:${$side + dif * 2}px;
+    left: -${2 * dif}px;
     top: -${dif}px;
     position: absolute;
     transform: rotate(${angle}deg);
+     animation-duration: 10s;
   `;
-  console.log($height, $side,dif);
+  console.log($height, $side, dif);
 </script>
 <style>
-
   div :first-child {
     transform-origin: center;
     display: inline-block;
-    max-width: 100%;
-    min-width: 100%;
-    max-height: 100%;
-    min-height: 100%;
+    width: 100%;
+
+    height: 100%;
+    object-fit: cover;
   }
 
   .rotate {
-    animation: rotation 3s linear infinite;
+    animation-name: rotation;
+
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
   }
 
   @keyframes rotation {
