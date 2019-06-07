@@ -12,7 +12,6 @@
     position: absolute;
     transform: rotate(${angle}deg);
   `;
-  console.log($height, $side,dif);
 </script>
 <style>
 
