@@ -10,14 +10,16 @@
 <!--  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"-->
 <!--          integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"-->
 <!--          crossorigin="anonymous"></script>-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
 </svelte:head>
+
 <script>
   import KaleidoscopeTexture from './kaleidoscopeTexture.svelte';
   import Triangle from "./triangle.svelte"
   import Fun from './fun.svelte';
 
   let height = 150;
-  let angle = 0;
+  let angle = 120;
   let rotate = 0;
   let file = "images.jpg";
 
@@ -47,7 +49,7 @@
         </div>
         <div class="col-sm-3">
           <div class="form-group">
-            <label for="aR">Angle: {height}</label>
+            <label for="aR">Angle: {angle}</label>
             <input type="range" id="aR" class="form-control-range" min="0" max="360" bind:value={angle}/>
           </div>
         </div>
